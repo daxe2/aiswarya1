@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Story</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #fde2e4, #f9f1f0);
+      color: #444;
+      overflow-x: hidden;
+    }
+    header {
+      text-align: center;
+      padding: 50px 20px;
+      animation: fadeIn 2s ease;
+    }
+    header h1 {
+      font-size: 3rem;
+      color: #6d597a;
+    }
+    header p {
+      font-size: 1.2rem;
+      color: #8d6a9f;
+    }
+    .photo-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 40px 0;
+      flex-direction: column;
+    }
+    .photo-section img {
+      width: 300px;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      transition: transform 0.5s;
+    }
+    .photo-section img:hover {
+      transform: scale(1.05) rotate(-2deg);
+    }
+    .poem {
+      max-width: 700px;
+      margin: 40px auto;
+      text-align: center;
+      font-style: italic;
+      font-size: 1.2rem;
+      color: #5c4d7d;
+      line-height: 1.8;
+      animation: fadeInUp 2s ease;
+    }
+    .proposal {
+      text-align: center;
+      padding: 60px 20px;
+      background: #fff0f6;
+      margin: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      animation: pulse 3s infinite;
+    }
+    .proposal h2 {
+      font-size: 2.5rem;
+      color: #9c528b;
+      text-shadow: 0 0 10px rgba(255,182,193,0.7);
+    }
+    .proposal p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      color: #6d597a;
+      text-shadow: 0 0 10px rgba(255,182,193,0.7);
+    }
+    .btn {
+      padding: 12px 25px;
+      border: none;
+      border-radius: 30px;
+      background: #ffb4a2;
+      color: white;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .btn:hover {
+      background: #ff9b85;
+    }
+    .challenge-box {
+      margin-top: 20px;
+      font-size: 1.1rem;
+      color: #5c4d7d;
+      font-weight: bold;
+      min-height: 38px;
+      text-shadow: 0 0 10px rgba(255,182,193,0.7);
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+    @keyframes fadeInUp {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    @keyframes pulse {
+      0% {box-shadow: 0 0 10px rgba(156, 82, 139, 0.2);} 
+      50% {box-shadow: 0 0 30px rgba(156, 82, 139, 0.5);} 
+      100% {box-shadow: 0 0 10px rgba(156, 82, 139, 0.2);} 
+    }
+    @keyframes floatHearts {
+      0% { transform: translateY(0) translateX(0); opacity: 1; }
+      50% { transform: translateY(50vh) translateX(20px) rotate(20deg); }
+      100% { transform: translateY(100vh) translateX(-20px) rotate(-20deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1> FOR MY TOMATO❤️</h1>
+    <p>Every heartbeat whispers your name, every sunrise paints your smile.</p>
+  </header>
+
+  <div class="photo-section">
+    <img src="3.jpg" alt="Our Picture">
+  </div>
+
+  <div class="poem">
+    <p>“In your eyes, I found my home,<br>
+    In your smile, my brightest dawn.<br>
+    Through every storm, through every night,<br>
+    You are my poem, my guiding light.”</p>
+
+    <p>“If love were stars, you’d be the sky,<br>
+    If love were wings, with you I’d fly.<br>
+    With every breath, I promise true,<br>
+    Forever begins and ends with you.”</p>
+  </div>
+
+  <div class="proposal">
+    <h2> CAN MY LIL TOMATO STAY FOR EVER ?</h2>
+    <p>No grand palace, no million roses—just my whole heart.</p>
+    <button class="btn" id="challengeBtn"> START Challenge</button>
+    <div class="challenge-box" id="challengeBox"></div>
+  </div>
+
+  <script>
+  const box = document.getElementById('challengeBox');
+  const btn = document.getElementById('challengeBtn');
+
+  const challenges = [
+    "🌸 Challenge : Say my name softly in your heart.",
+    "🌹 Challenge : Close your eyes and think of our happiest memory.",
+    "💫 Challenge : Whisper 'forever' to yourself.",
+    "😘 Challenge : Smile right now, because your smile is my universe.",
+    "💖 Challenge : Hold my hands.",
+    "💍 Challenge : Say you love me looking into my eyes.",
+    "💞 Challenge : Imagine our future together, filled with love and laughter.",
+    "💝 Challenge : Fix it in your mind — there is no next, we stay forever.",
+    "💗 Challenge : Sing a line from a song.",
+    "💓 Challenge : Each blink you take is one kiss from me.",
+    "💘 Challenge : Imagine hugging a teddy bear — now replace it with me."
+  ];
+
+  btn.addEventListener('click', () => {
+    if (challenges.length > 0) {
+      // Pick random challenge
+      const randomIndex = Math.floor(Math.random() * challenges.length);
+      const challenge = challenges[randomIndex];
+
+      // Show it
+      box.innerHTML = challenge;
+
+      // Remove used challenge so it doesn’t repeat
+      challenges.splice(randomIndex, 1);
+
+      // Update button text
+      if (challenges.length === 0) {
+        btn.innerText = "Finish 💖";
+      } else {
+        btn.innerText = "Next 💕";
+      }
+    } else {
+      propose();
+    }
+  });
+
+  function propose() {
+    btn.style.display = "none"; 
+    box.innerHTML = "completed it all like a PRINCESS.";
+    createHearts();
+  }
+
+  function createHearts() {
+    for (let i = 0; i < 20; i++) {
+      let heart = document.createElement('div');
+      heart.innerHTML = '💖';
+      heart.style.position = 'fixed';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.top = '-10px';
+      heart.style.fontSize = '2rem';
+      heart.style.pointerEvents = 'none';
+      heart.style.animation = 'floatHearts 4s linear forwards';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 4200);
+    }
+  }
+</script>
+
+
+</body>
+</html>
